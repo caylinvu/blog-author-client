@@ -24,6 +24,10 @@ function Login({ setToken, setUser, setIsLoggedIn }) {
         setIsLoggedIn(true);
         setUsername('');
         setPassword('');
+        localStorage.setItem('token', JSON.stringify(responseData.token));
+        localStorage.setItem('user', JSON.stringify(responseData.user));
+        localStorage.setItem('isLoggedIn', JSON.stringify(true));
+        localStorage.setItem('createdAt', new Date().getTime());
       }
     } catch (err) {
       console.log(err);
@@ -32,7 +36,7 @@ function Login({ setToken, setUser, setIsLoggedIn }) {
 
   return (
     <div onSubmit={handleLogin} className="login-page">
-      <h1>Login</h1>
+      <h2>Login</h2>
       <form className="login-form">
         <div className="form-group">
           <label htmlFor="username">Username</label>
@@ -48,7 +52,7 @@ function Login({ setToken, setUser, setIsLoggedIn }) {
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <input
-            type="text"
+            type="password"
             name="password"
             id="password"
             value={password}

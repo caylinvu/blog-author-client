@@ -13,6 +13,22 @@ function App() {
   const [user, setUser] = useState('');
 
   useEffect(() => {
+    if (!localStorage.getItem('token')) {
+      return;
+    } else {
+      const hours = 24;
+      const createdAt = JSON.parse(localStorage.getItem('createdAt'));
+      if (new Date().getTime() - createdAt > hours * 60 * 60 * 1000) {
+        localStorage.clear();
+        return;
+      }
+      setToken(JSON.parse(localStorage.getItem('token')));
+      setUser(JSON.parse(localStorage.getItem('user')));
+      setIsLoggedIn(JSON.parse(localStorage.getItem('isLoggedIn')));
+    }
+  }, []);
+
+  useEffect(() => {
     const getPosts = async () => {
       try {
         const response = await fetch('https://blog-api-production-7f4c.up.railway.app/api/posts');
@@ -90,3 +106,5 @@ export default App;
 // Add way to add new posts
 
 // Add ability to delete comments
+
+// ADD LOADING SCREEN
