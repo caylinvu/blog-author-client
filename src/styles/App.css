@@ -70,6 +70,30 @@ a {
   overflow-wrap: break-word;
 }
 
+.comment-section {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: start;
+  margin: 16px 0;
+}
+
+.comment-section p {
+  display: inline-block;
+  word-break: break-word;
+  margin: 0;
+}
+
+.comment-section button {
+  display: flex;
+  padding: 0;
+  cursor: pointer;
+}
+
+.comment-section img {
+  width: 20px;
+}
+
 .no-comments {
   text-align: center;
 }

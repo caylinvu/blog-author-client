@@ -3,13 +3,32 @@ import { useState, useEffect } from 'react';
 import { useOutletContext, useParams } from 'react-router-dom';
 
 function Comments() {
-  const { comments } = useOutletContext();
+  const { comments, updateComments, setUpdateComments } = useOutletContext();
   const { postId } = useParams();
   const [postComments, setPostComments] = useState([]);
 
   useEffect(() => {
     setPostComments(comments.filter((obj) => obj.post === postId));
   }, [comments, postId]);
+
+  const deleteComment = async (commentId) => {
+    try {
+      const response = await fetch(
+        'https://blog-api-production-7f4c.up.railway.app/api/posts/' +
+          postId +
+          '/comments/' +
+          commentId,
+        {
+          method: 'DELETE',
+        },
+      );
+      if (response.status === 200) {
+        setUpdateComments(!updateComments);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="comment-container">
@@ -18,7 +37,12 @@ function Comments() {
         postComments.map((obj) => {
           return (
             <div key={obj._id} className="comment">
-              <p>{obj.text}</p>
+              <div className="comment-section">
+                <p>{obj.text}</p>
+                <button type="button" onClick={() => deleteComment(obj._id)}>
+                  <img src="/trash.svg" alt="" />
+                </button>
+              </div>
               <p>@{obj.display_name}</p>
               <p>{DateTime.fromISO(obj.timestamp).toLocaleString(DateTime.DATETIME_MED)}</p>
             </div>
