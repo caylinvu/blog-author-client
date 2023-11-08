@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 import { useParams, useOutletContext } from 'react-router-dom';
-// import Comments from './Comments';
+import Comments from './Comments';
 
 function PostDetail() {
   const { posts } = useOutletContext();
@@ -22,7 +22,7 @@ function PostDetail() {
             </div>
           );
         })}
-      {/* <Comments /> */}
+      <Comments />
     </div>
   );
 }

@@ -69,10 +69,6 @@ export default App;
 // -- IF no user logged in, show login page
 // -- IF user is logged in, show outlet routes
 
-// Create home page to view posts
-
-// Create post detail to view post with comments
-
 // Add way to update posts
 
 // Add button to easily publish/unpublish

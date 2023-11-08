@@ -46,3 +46,30 @@ a {
   text-align: left;
   padding: 15px 0;
 }
+
+/* ~~~~~~~~~~COMMENTS~~~~~~~~~~ */
+
+.comment-container {
+  text-align: left;
+  max-width: 500px;
+  margin: auto;
+}
+
+.comment-container h2 {
+  text-align: center;
+}
+
+.comment {
+  border: solid black 1px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+
+.comment p {
+  overflow-wrap: break-word;
+}
+
+.no-comments {
+  text-align: center;
+}
