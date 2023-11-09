@@ -3,8 +3,18 @@ a {
   color: black;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header-txt {
   font-size: 36px;
+}
+
+.logout {
+  cursor: pointer;
 }
 
 .introduction {

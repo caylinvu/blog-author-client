@@ -2,13 +2,16 @@ import './styles/App.css';
 import { useState, useEffect } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 import Login from './components/Login';
+import Logout from './components/Logout';
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
-  const [updatePosts, setUpdatePosts] = useState([]);
+  const [updatePosts, setUpdatePosts] = useState(false);
   const [updateComments, setUpdateComments] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(
+    JSON.parse(localStorage.getItem('isLoggedIn')) || false,
+  );
   const [token, setToken] = useState('');
   const [user, setUser] = useState('');
 
@@ -19,7 +22,7 @@ function App() {
       const hours = 24;
       const createdAt = JSON.parse(localStorage.getItem('createdAt'));
       if (new Date().getTime() - createdAt > hours * 60 * 60 * 1000) {
-        localStorage.clear();
+        handleLogout();
         return;
       }
       setToken(JSON.parse(localStorage.getItem('token')));
@@ -42,8 +45,10 @@ function App() {
         console.log(err);
       }
     };
-    getPosts();
-  }, [updatePosts]);
+    if (isLoggedIn) {
+      getPosts();
+    }
+  }, [updatePosts, isLoggedIn]);
 
   useEffect(() => {
     const getComments = async () => {
@@ -61,14 +66,28 @@ function App() {
         console.log(err);
       }
     };
-    getComments();
-  }, [updateComments]);
+    if (isLoggedIn) {
+      getComments();
+    }
+  }, [updateComments, isLoggedIn]);
+
+  const handleLogout = () => {
+    localStorage.clear();
+    setIsLoggedIn(false);
+    setToken('');
+    setUser('');
+    setPosts([]);
+    setComments([]);
+  };
 
   return (
     <>
-      <Link to="/">
-        <h1 className="header-txt">Blog4Cats (Author)</h1>
-      </Link>
+      <div className="header">
+        <Link to="/">
+          <h1 className="header-txt">Blog4Cats (Author)</h1>
+        </Link>
+        {isLoggedIn && <Logout handleLogout={handleLogout} />}
+      </div>
       {isLoggedIn ? (
         <Outlet
           context={{
@@ -91,8 +110,4 @@ function App() {
 
 export default App;
 
-// maybe combine editpost/createpost components
-
-// Handle log out
-
-// ADD LOADING SCREEN
+// add error text for login
