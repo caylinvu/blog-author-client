@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 function Login({ setToken, setUser, setIsLoggedIn }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [loginError, setLoginError] = useState(null);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -18,7 +19,9 @@ function Login({ setToken, setUser, setIsLoggedIn }) {
       });
       const responseData = await response.json();
       console.log(responseData);
+      console.log(response);
       if (response.status === 200) {
+        setLoginError(null);
         setToken(responseData.token);
         setUser(responseData.user);
         setIsLoggedIn(true);
@@ -28,6 +31,8 @@ function Login({ setToken, setUser, setIsLoggedIn }) {
         localStorage.setItem('user', JSON.stringify(responseData.user));
         localStorage.setItem('isLoggedIn', JSON.stringify(true));
         localStorage.setItem('createdAt', new Date().getTime());
+      } else if (!response.ok) {
+        setLoginError(responseData.message);
       }
     } catch (err) {
       console.log(err);
@@ -61,6 +66,7 @@ function Login({ setToken, setUser, setIsLoggedIn }) {
           />
         </div>
         <button type="submit">Login</button>
+        {loginError ? <p>{loginError}</p> : null}
       </form>
     </div>
   );

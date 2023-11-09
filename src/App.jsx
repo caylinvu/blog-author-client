@@ -109,5 +109,3 @@ function App() {
 }
 
 export default App;
-
-// add error text for login
