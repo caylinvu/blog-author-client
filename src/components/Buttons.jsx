@@ -28,8 +28,9 @@ function Buttons({ post }) {
     }
   };
 
-  const handleEdit = (e) => {
+  const navToEdit = (e) => {
     e.preventDefault();
+    navigate('/post/' + post._id + '/edit', { state: post });
   };
 
   const handleDelete = async (e) => {
@@ -56,7 +57,7 @@ function Buttons({ post }) {
       <button type="button" onClick={togglePublish}>
         {post.isPublished ? 'Unpublish' : 'Publish'}
       </button>
-      <button type="button" onClick={handleEdit}>
+      <button type="button" onClick={navToEdit}>
         Edit
       </button>
       <button type="button" onClick={handleDelete}>

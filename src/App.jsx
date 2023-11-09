@@ -92,7 +92,6 @@ function App() {
 export default App;
 
 // add functionality to the following buttons:
-// delete
 // put form into it's own component to also use with edit
 // edit (make link to form page)
 

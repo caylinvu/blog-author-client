@@ -176,7 +176,8 @@ a {
 
 /* ~~~~~~~~~~NEW POST FORM~~~~~~~~~~ */
 
-.create-post {
+.create-post,
+.edit-post {
   max-width: 600px;
   margin: auto;
 }

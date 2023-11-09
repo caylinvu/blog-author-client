@@ -3,6 +3,7 @@ import App from '../App';
 import PreviewContainer from './PreviewContainer';
 import PostDetail from './PostDetail';
 import CreatePost from './CreatePost';
+import EditPost from './EditPost';
 
 function Router() {
   const router = createBrowserRouter([
@@ -13,6 +14,7 @@ function Router() {
         { path: '/', element: <PreviewContainer /> },
         { path: '/create-post', element: <CreatePost /> },
         { path: '/post/:postId', element: <PostDetail /> },
+        { path: '/post/:postId/edit', element: <EditPost /> },
       ],
     },
   ]);
