@@ -1,10 +1,17 @@
 import { DateTime } from 'luxon';
-import { useOutletContext } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useOutletContext, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Buttons from './Buttons';
 
 function PostContainer() {
   const { posts, user } = useOutletContext();
+  const [orderedPosts, setOrderedPosts] = useState([]);
+
+  useEffect(() => {
+    const unpublished = posts.filter((obj) => !obj.isPublished);
+    const published = posts.filter((obj) => obj.isPublished);
+    setOrderedPosts(unpublished.concat(published));
+  }, [posts]);
 
   return (
     <>
@@ -17,7 +24,7 @@ function PostContainer() {
         </Link>
       </div>
       <div className="preview-container">
-        {posts.map((obj) => {
+        {orderedPosts.map((obj) => {
           return (
             <Link to={'/post/' + obj._id} key={obj._id}>
               <div className="post-preview">

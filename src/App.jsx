@@ -91,11 +91,7 @@ function App() {
 
 export default App;
 
-// add functionality to the following buttons:
-// put form into it's own component to also use with edit
-// edit (make link to form page)
-
-// maybe sort to show unpublished blog posts first???
+// maybe combine editpost/createpost components
 
 // Handle log out
 
