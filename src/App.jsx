@@ -92,9 +92,9 @@ function App() {
 export default App;
 
 // add functionality to the following buttons:
-// create new post (maybe make create/edit buttons links to a form page)
 // delete
-// edit
+// put form into it's own component to also use with edit
+// edit (make link to form page)
 
 // maybe sort to show unpublished blog posts first???
 

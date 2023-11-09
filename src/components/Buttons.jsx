@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import { useOutletContext } from 'react-router-dom';
+import { useOutletContext, useNavigate } from 'react-router-dom';
 
 function Buttons({ post }) {
   const { token, updatePosts, setUpdatePosts } = useOutletContext();
+  const navigate = useNavigate();
 
   const togglePublish = async (e) => {
     e.preventDefault();
@@ -31,8 +32,23 @@ function Buttons({ post }) {
     e.preventDefault();
   };
 
-  const handleDelete = (e) => {
+  const handleDelete = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch(
+        'https://blog-api-production-7f4c.up.railway.app/api/posts/' + post._id,
+        {
+          method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
+      if (response.status === 200) {
+        setUpdatePosts(!updatePosts);
+        navigate('/');
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
