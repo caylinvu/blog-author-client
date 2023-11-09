@@ -12,7 +12,7 @@ function PostContainer() {
         <h2>
           Hello {user.first_name} {user.last_name}!
         </h2>
-        <button>Create New Post</button>
+        <button type="button">Create New Post</button>
       </div>
       <div className="preview-container">
         {posts.map((obj) => {
@@ -35,7 +35,7 @@ function PostContainer() {
                   ) : (
                     <p className="unpub-txt pub-txt">Unpublished</p>
                   )}
-                  <Buttons postId={obj._id} isPublished={obj.isPublished} />
+                  <Buttons post={obj} />
                 </div>
               </div>
             </Link>

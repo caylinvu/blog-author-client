@@ -20,7 +20,7 @@ function PostDetail() {
                 {obj.author.first_name} {obj.author.last_name}
               </p>
               <p className="post-txt">{obj.text}</p>
-              <Buttons postId={obj._id} isPublished={obj.isPublished} />
+              <Buttons post={obj} />
             </div>
           );
         })}
