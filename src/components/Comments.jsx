@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useOutletContext, useParams } from 'react-router-dom';
 
 function Comments() {
-  const { comments, updateComments, setUpdateComments } = useOutletContext();
+  const { comments, updateComments, setUpdateComments, token } = useOutletContext();
   const { postId } = useParams();
   const [postComments, setPostComments] = useState([]);
 
@@ -20,6 +20,7 @@ function Comments() {
           commentId,
         {
           method: 'DELETE',
+          headers: { Authorization: `Bearer ${token}` },
         },
       );
       if (response.status === 200) {

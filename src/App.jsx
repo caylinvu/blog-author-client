@@ -78,6 +78,8 @@ function App() {
             setUpdatePosts,
             updateComments,
             setUpdateComments,
+            token,
+            user,
           }}
         />
       ) : (
@@ -88,14 +90,6 @@ function App() {
 }
 
 export default App;
-
-// Create login page!!!
-// -- IF no user logged in, show login page
-// -- IF user is logged in, show outlet routes
-
-// Add local storage to keep login
-
-// Clear token, user, and isLoggedIn when token expires
 
 // Handle log out
 
