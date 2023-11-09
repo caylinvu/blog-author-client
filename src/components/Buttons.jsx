@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom';
 function Buttons({ post }) {
   const { token, updatePosts, setUpdatePosts } = useOutletContext();
 
-  const handlePublish = async (e) => {
+  const togglePublish = async (e) => {
     e.preventDefault();
     try {
       const response = await fetch(
@@ -19,11 +19,8 @@ function Buttons({ post }) {
           }),
         },
       );
-      const updatedPost = await response.json();
-      console.log(updatedPost);
       if (response.status === 200) {
         setUpdatePosts(!updatePosts);
-        console.log('SUCCESSFULLY PUBLISHED/UNPUBLISHED');
       }
     } catch (err) {
       console.log(err);
@@ -40,7 +37,7 @@ function Buttons({ post }) {
 
   return (
     <div className="btn-container">
-      <button type="button" onClick={handlePublish}>
+      <button type="button" onClick={togglePublish}>
         {post.isPublished ? 'Unpublish' : 'Publish'}
       </button>
       <button type="button" onClick={handleEdit}>

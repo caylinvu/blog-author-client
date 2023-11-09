@@ -92,10 +92,11 @@ function App() {
 export default App;
 
 // add functionality to the following buttons:
-// unpublish/publish
-// create new post
+// create new post (maybe make create/edit buttons links to a form page)
 // delete
 // edit
+
+// maybe sort to show unpublished blog posts first???
 
 // Handle log out
 

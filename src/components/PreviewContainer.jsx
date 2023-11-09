@@ -12,7 +12,9 @@ function PostContainer() {
         <h2>
           Hello {user.first_name} {user.last_name}!
         </h2>
-        <button type="button">Create New Post</button>
+        <Link to="/create-post">
+          <button type="button">Create New Post</button>
+        </Link>
       </div>
       <div className="preview-container">
         {posts.map((obj) => {
