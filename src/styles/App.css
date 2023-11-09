@@ -68,6 +68,10 @@ a {
   justify-content: space-between;
 }
 
+.unpub-txt {
+  font-weight: bold;
+}
+
 /* ~~~~~~~~~~INDIVIDUAL POST~~~~~~~~~~ */
 
 .post-detail {

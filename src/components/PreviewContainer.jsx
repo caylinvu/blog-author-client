@@ -11,29 +11,31 @@ function PostContainer() {
         Hello {user.first_name} {user.last_name}!
       </h2>
       <div className="preview-container">
-        {posts
-          .filter((obj) => obj.isPublished)
-          .map((obj) => {
-            return (
-              <Link to={'/post/' + obj._id} key={obj._id}>
-                <div className="post-preview">
-                  <div className="top">
-                    <h2>{obj.title}</h2>
-                    <p>{obj.text.slice(0, 100)}...</p>
-                  </div>
-                  <div className="bottom">
-                    <p>
-                      By {obj.author.first_name} {obj.author.last_name}
-                    </p>
+        {posts.map((obj) => {
+          return (
+            <Link to={'/post/' + obj._id} key={obj._id}>
+              <div className="post-preview">
+                <div className="top">
+                  <h2>{obj.title}</h2>
+                  <p>{obj.text.slice(0, 100)}...</p>
+                </div>
+                <div className="bottom">
+                  <p>
+                    By {obj.author.first_name} {obj.author.last_name}
+                  </p>
+                  {obj.isPublished ? (
                     <p>
                       Published{' '}
                       {DateTime.fromISO(obj.timestamp).toLocaleString(DateTime.DATETIME_MED)}
                     </p>
-                  </div>
+                  ) : (
+                    <p className="unpub-txt">Unpublished</p>
+                  )}
                 </div>
-              </Link>
-            );
-          })}
+              </div>
+            </Link>
+          );
+        })}
       </div>
     </>
   );

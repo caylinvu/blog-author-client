@@ -93,7 +93,13 @@ export default App;
 
 // Handle log out
 
-// Add way to update posts
+// show ALL posts (even unpublished)
+
+// add marker to show if published/unpublished
+
+// add edit button to posts
+
+// add form to edit posts
 
 // Add button to easily publish/unpublish
 
