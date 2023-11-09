@@ -12,6 +12,7 @@ function Buttons({ postId, isPublished }) {
 
 Buttons.propTypes = {
   postId: PropTypes.string,
+  isPublished: PropTypes.bool,
 };
 
 export default Buttons;

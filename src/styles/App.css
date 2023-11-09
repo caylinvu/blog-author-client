@@ -9,7 +9,16 @@ a {
 
 .introduction {
   text-align: center;
+}
+
+.introduction h2 {
   font-size: 30px;
+  margin-bottom: 25px;
+}
+
+.introduction button {
+  margin-bottom: 25px;
+  cursor: pointer;
 }
 
 /* ~~~~~~~~~~LOGIN~~~~~~~~~~ */

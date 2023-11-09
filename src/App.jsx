@@ -91,13 +91,11 @@ function App() {
 
 export default App;
 
-// add edit button to posts
-
-// add form to edit posts
-
-// Add button to easily publish/unpublish
-
-// Add way to add new posts
+// add functionality to the following buttons:
+// unpublish/publish
+// create new post
+// delete
+// edit
 
 // Handle log out
 
