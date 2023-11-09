@@ -91,12 +91,6 @@ function App() {
 
 export default App;
 
-// Handle log out
-
-// show ALL posts (even unpublished)
-
-// add marker to show if published/unpublished
-
 // add edit button to posts
 
 // add form to edit posts
@@ -105,6 +99,6 @@ export default App;
 
 // Add way to add new posts
 
-// Add ability to delete comments
+// Handle log out
 
 // ADD LOADING SCREEN

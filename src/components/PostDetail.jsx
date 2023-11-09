@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import { useParams, useOutletContext } from 'react-router-dom';
 import Comments from './Comments';
+import Buttons from './Buttons';
 
 function PostDetail() {
   const { posts } = useOutletContext();
@@ -18,7 +19,8 @@ function PostDetail() {
                 {DateTime.fromISO(obj.timestamp).toLocaleString(DateTime.DATETIME_MED)} || by{' '}
                 {obj.author.first_name} {obj.author.last_name}
               </p>
-              <p>{obj.text}</p>
+              <p className="post-txt">{obj.text}</p>
+              <Buttons postId={obj._id} isPublished={obj.isPublished} />
             </div>
           );
         })}

@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import { useOutletContext } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Buttons from './Buttons';
 
 function PostContainer() {
   const { posts, user } = useOutletContext();
@@ -24,13 +25,14 @@ function PostContainer() {
                     By {obj.author.first_name} {obj.author.last_name}
                   </p>
                   {obj.isPublished ? (
-                    <p>
+                    <p className="pub-txt">
                       Published{' '}
                       {DateTime.fromISO(obj.timestamp).toLocaleString(DateTime.DATETIME_MED)}
                     </p>
                   ) : (
-                    <p className="unpub-txt">Unpublished</p>
+                    <p className="unpub-txt pub-txt">Unpublished</p>
                   )}
+                  <Buttons postId={obj._id} isPublished={obj.isPublished} />
                 </div>
               </div>
             </Link>
